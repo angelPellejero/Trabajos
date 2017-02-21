@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trabajos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tipo</th>
+                <th>Empresa</th>
+                <th>Logo</th>
+                <th>Url</th>
+                <th>Puesto</th>
+                <th>Ubicacion</th>
+                <th>Descripcion</th>
+                <th>Comosolicitar</th>
+                <th>Slug</th>
+                <th>Espublico</th>
+                <th>Estaactivado</th>
+                <th>Ecorreo</th>
+                <th>Expiresat</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for trabajo in trabajos %}
+            <tr>
+                <td><a href="{{ path('trabajo_show', { 'id': trabajo.id }) }}">{{ trabajo.id }}</a></td>
+                <td>{{ trabajo.tipo }}</td>
+                <td>{{ trabajo.empresa }}</td>
+                <td>{{ trabajo.logo }}</td>
+                <td>{{ trabajo.url }}</td>
+                <td>{{ trabajo.puesto }}</td>
+                <td>{{ trabajo.ubicacion }}</td>
+                <td>{{ trabajo.descripcion }}</td>
+                <td>{{ trabajo.comosolicitar }}</td>
+                <td>{{ trabajo.slug }}</td>
+                <td>{% if trabajo.espublico %}Yes{% else %}No{% endif %}</td>
+                <td>{% if trabajo.estaactivado %}Yes{% else %}No{% endif %}</td>
+                <td>{{ trabajo.ecorreo }}</td>
+                <td>{% if trabajo.expiresAt %}{{ trabajo.expiresAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if trabajo.createdAt %}{{ trabajo.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if trabajo.updatedAt %}{{ trabajo.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('trabajo_show', { 'id': trabajo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('trabajo_edit', { 'id': trabajo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('trabajo_new') }}">Create a new trabajo</a>
+        </li>
+    </ul>
+{% endblock %}

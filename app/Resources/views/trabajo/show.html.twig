@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Trabajo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ trabajo.id }}</td>
+            </tr>
+            <tr>
+                <th>Tipo</th>
+                <td>{{ trabajo.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Empresa</th>
+                <td>{{ trabajo.empresa }}</td>
+            </tr>
+            <tr>
+                <th>Logo</th>
+                <td>{{ trabajo.logo }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ trabajo.url }}</td>
+            </tr>
+            <tr>
+                <th>Puesto</th>
+                <td>{{ trabajo.puesto }}</td>
+            </tr>
+            <tr>
+                <th>Ubicacion</th>
+                <td>{{ trabajo.ubicacion }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ trabajo.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Comosolicitar</th>
+                <td>{{ trabajo.comosolicitar }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ trabajo.slug }}</td>
+            </tr>
+            <tr>
+                <th>Espublico</th>
+                <td>{% if trabajo.espublico %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Estaactivado</th>
+                <td>{% if trabajo.estaactivado %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Ecorreo</th>
+                <td>{{ trabajo.ecorreo }}</td>
+            </tr>
+            <tr>
+                <th>Expiresat</th>
+                <td>{% if trabajo.expiresAt %}{{ trabajo.expiresAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if trabajo.createdAt %}{{ trabajo.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if trabajo.updatedAt %}{{ trabajo.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('trabajo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('trabajo_edit', { 'id': trabajo.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

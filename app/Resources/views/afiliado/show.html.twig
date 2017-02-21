@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Afiliado</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ afiliado.id }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ afiliado.url }}</td>
+            </tr>
+            <tr>
+                <th>Ecorreo</th>
+                <td>{{ afiliado.ecorreo }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ afiliado.slug }}</td>
+            </tr>
+            <tr>
+                <th>Estaactivo</th>
+                <td>{% if afiliado.estaactivo %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if afiliado.createdAt %}{{ afiliado.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('afiliado_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('afiliado_edit', { 'id': afiliado.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
